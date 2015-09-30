@@ -158,10 +158,10 @@ publishHexacopterMarker(ros::Publisher pub,
   marker.scale.x = 0.2*marker_scale;
   marker.scale.y = 0.2*marker_scale;
   marker.scale.z = 0.01*marker_scale;
-  marker.color.r = 0.4;
+  marker.color.r = 0.8;
   marker.color.g = 0.4;
   marker.color.b = 0.4;
-  marker.color.a = 0.8;
+  marker.color.a = 0.4;
   marker.pose.position.z = 0;
 
   // front left/right
@@ -176,6 +176,10 @@ publishHexacopterMarker(ros::Publisher pub,
   pub.publish(marker);
 
   // left/right
+  marker.color.r = 0.4; // Change color to gray
+  marker.color.g = 0.4;
+  marker.color.b = 0.4;
+  marker.color.a = 0.8;
   marker.pose.position.x = 0;
   marker.pose.position.y = 0.22*marker_scale;
   marker.id--;

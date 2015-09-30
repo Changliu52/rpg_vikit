@@ -199,4 +199,22 @@ sampsonusError(const Vector2d &v2Dash, const Matrix3d& Essential, const Vector2d
   return (dError * dError / (fv3Slice.dot(fv3Slice) + fTv3DashSlice.dot(fTv3DashSlice)));
 }
 
+// mine##############################
+Matrix3d
+quat2dcm(const Vector4d &q)
+{
+  // Compute R
+  double twoqxqx = 2*q[1]*q[1];  double twoqyqy = 2*q[2]*q[2];  double twoqzqz = 2*q[3]*q[3];
+  double twoqxqy = 2*q[1]*q[2];  double twoqxqz = 2*q[1]*q[3];  double twoqxqw = 2*q[1]*q[0];
+  double twoqyqz = 2*q[2]*q[3];  double twoqyqw = 2*q[2]*q[0];
+  double twoqzqw = 2*q[3]*q[0];
+
+  Matrix3d R;
+  R(0,0) = 1 - twoqyqy - twoqzqz;   R(0,1) = twoqxqy - twoqzqw;        R(0,2) = twoqxqz + twoqyqw;
+  R(1,0) = twoqxqy + twoqzqw;       R(1,1) = 1 - twoqxqx - twoqzqz;    R(1,2) = twoqyqz - twoqxqw;
+  R(2,0) = twoqxqz - twoqyqw;       R(2,1) = twoqyqz + twoqxqw;        R(2,2) = 1 - twoqxqx - twoqyqy;
+  
+  return R;
+}
+
 } // end namespace vk

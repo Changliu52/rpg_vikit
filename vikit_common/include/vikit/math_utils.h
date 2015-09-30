@@ -74,6 +74,9 @@ Quaterniond angax2quat(const Vector3d& n, const double& angle);
 //! Angle Axis parametrization to Matrix representation
 Matrix3d angax2dcm(const Vector3d& n, const double& angle);
 
+//! Mine: Quaternion to DCM ########################
+Matrix3d quat2dcm(const Vector4d &q);
+
 double sampsonusError(
     const Vector2d &v2Dash,
     const Matrix3d& m3Essential,
